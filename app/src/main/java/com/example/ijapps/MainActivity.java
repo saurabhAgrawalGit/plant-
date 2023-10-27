@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         imageView = findViewById(R.id.imageView);
            soll = findViewById(R.id.sol);
 
+
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

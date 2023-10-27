@@ -9,6 +9,22 @@
 
     >
 
+    <View
+        android:id="@+id/view"
+        android:layout_width="420dp"
+        android:layout_marginRight="-6dp"
+
+        android:layout_height="700px"
+
+        android:layout_marginTop="-11dp"
+        android:background="@drawable/vect"
+
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <Button
         android:id="@+id/button"
@@ -35,39 +51,39 @@
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
-        android:layout_height="63dp"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:layout_margin="12dp"
-        android:background="@drawable/gradient"
+     android:layout_margin="12dp"
+        android:background="@drawable/button_bt"
 
-        android:fontFamily="@font/hanken"
-
-        android:letterSpacing="0.08"
-        android:gravity="center"
-        android:paddingTop="6dp"
+        android:fontFamily="@font/mono"
+        android:textStyle="bold"
+        android:letterSpacing="0.15"
 
 
         android:text="Launch Gallery"
-        android:textColor="#FFFFFF"
-        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:textSize="21sp"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
+
         android:id="@+id/imageView"
-        android:layout_width="250sp"
-        android:layout_height="250sp"
+        android:layout_width="155dp"
+        android:layout_height="155dp"
 
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="16dp"
 
-        android:src="@drawable/img5"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/demoscan"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.437"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <TextView
         android:id="@+id/classified"
@@ -114,8 +130,10 @@
 
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/result"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="UnknownId">
 
         <TextView
