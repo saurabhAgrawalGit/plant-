@@ -92,7 +92,7 @@
 
     <ImageView
 
-        android:id="@+id/imageView"
+        android:id="@+id/imageView1"
         android:layout_width="155dp"
         android:layout_height="155dp"
 
@@ -107,10 +107,10 @@
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <TextView
-        android:id="@+id/classified"
+        android:id="@+id/classified1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView"
+        android:layout_below="@+id/imageView1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
 
@@ -123,13 +123,13 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView1" />
 
     <TextView
-        android:id="@+id/result"
+        android:id="@+id/result1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/classified"
+        android:layout_below="@+id/classified1"
         android:layout_centerHorizontal="true"
         android:text=""
         android:textColor="#C30000"
@@ -137,39 +137,52 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/classified" />
+        app:layout_constraintTop_toBottomOf="@+id/classified1" />
 
-    <ScrollView
-        android:id="@+id/ScrollView01"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_above="@+id/button"
+<!--    <ScrollView-->
+<!--        android:id="@+id/ScrollView01"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_above="@+id/button"-->
 
-        android:layout_below="@+id/result"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="12dp"
+<!--        android:layout_below="@+id/result"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_margin="12dp"-->
 
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+<!--        app:layout_constraintBottom_toTopOf="@+id/button2"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.666"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/result"-->
+<!--        app:layout_constraintVertical_bias="0.0"-->
+<!--        tools:ignore="UnknownId">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/sol"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/classified"-->
+<!--            android:layout_marginLeft="12dp"-->
+<!--            android:fontFamily="@font/croissantcneregular"-->
+<!--            android:text=""-->
+
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="22dp"-->
+<!--            tools:ignore="InvalidId" />-->
+
+<!--    </ScrollView>-->
+
+    <Button
+        android:id="@+id/show_btn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/classified1"
+        android:fontFamily="@font/croissantcneregular"
+        android:text="Show More"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/ed_btn"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/result"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="UnknownId">
-
-        <TextView
-            android:id="@+id/sol"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/classified"
-            android:layout_marginLeft="12dp"
-            android:fontFamily="@font/croissantcneregular"
-            android:text=""
-
-            android:textColor="@color/black"
-            android:textSize="22dp"
-            tools:ignore="InvalidId" />
-
-    </ScrollView>
-
+        app:layout_constraintTop_toBottomOf="@+id/result1" />
 </androidx.constraintlayout.widget.ConstraintLayout>

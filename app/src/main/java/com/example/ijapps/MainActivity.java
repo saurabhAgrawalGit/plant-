@@ -3,7 +3,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -11,12 +10,10 @@ import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.example.ijapps.ml.Potatoes;
@@ -24,6 +21,7 @@ import com.example.ijapps.ml.Potatoes;
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -31,11 +29,12 @@ import java.nio.ByteOrder;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button camera, gallery;
+    Button camera, gallery,showMore1;
     ImageView imageView;
     TextView result,soll;
     int imageSize = 256;
-    
+    Bitmap image;
+
 
 
     @Override
@@ -46,10 +45,11 @@ public class MainActivity extends AppCompatActivity {
 
         camera = findViewById(R.id.button);
         gallery = findViewById(R.id.button2);
+        showMore1 = findViewById(R.id.show_btn);
 
-        result = findViewById(R.id.result);
-        imageView = findViewById(R.id.imageView);
-           soll = findViewById(R.id.sol);
+        result = findViewById(R.id.result1);
+        imageView = findViewById(R.id.imageView1);
+        //   soll = findViewById(R.id.sol);
 
 
         camera.setOnClickListener(new View.OnClickListener() {
@@ -140,8 +140,25 @@ public class MainActivity extends AppCompatActivity {
                     "Explore biological controls, especially in organic gardening.", "Healthy"};
 
             result.setText(classes[maxPos] +"  "  +100* maxConfidence);
-            soll.setText(solution[maxPos]);
+           // soll.setText(solution[maxPos]);
+            showMore1.setVisibility(View.VISIBLE);
 
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+           image.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            byte[] byteArray = stream.toByteArray();
+
+            int finalMaxPos = maxPos;
+            showMore1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent;
+                    intent = new Intent(MainActivity.this, showMore.class);
+                    intent.putExtra("picture", byteArray);
+                    intent.putExtra("res",classes[finalMaxPos] );
+                    intent.putExtra("solution", solution[finalMaxPos]);
+                    startActivity(intent);
+                }
+            });
             // Releases model resources if no longer used.
             model.close();
         } catch (IOException e) {
@@ -153,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if(resultCode == RESULT_OK){
             if(requestCode == 3){
-                Bitmap image = (Bitmap) data.getExtras().get("data");
+                 image = (Bitmap) data.getExtras().get("data");
                 int dimension = Math.min(image.getWidth(), image.getHeight());
 
                 image = ThumbnailUtils.extractThumbnail(image, dimension, dimension);
@@ -163,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
                 classifyImage(image);
             }else{
                 Uri dat = data.getData();
-                Bitmap image = null;
+                 image = null;
                 try {
                     image = MediaStore.Images.Media.getBitmap(this.getContentResolver(), dat);
                 } catch (IOException e) {
