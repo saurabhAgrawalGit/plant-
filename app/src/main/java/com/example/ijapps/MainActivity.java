@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     int imageSize = 256;
     
 
-    @SuppressLint("MissingInflatedId")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
